@@ -1,4 +1,5 @@
 import { Clock, MapPin, Heart } from "lucide-react";
+import { Link } from "react-router-dom";
 
 interface NavigationProps {
   currentTime: string;
@@ -18,13 +19,13 @@ const Navigation = ({ currentTime }: NavigationProps) => {
     <nav className="w-full max-w-4xl mx-auto px-6 py-8">
       <div className="flex flex-wrap justify-center gap-6 mb-8">
         {navLinks.map((link) => (
-          <a
+          <Link
             key={link.name}
-            href={link.href}
+            to={link.href}
             className="nav-link"
           >
             {link.name}
-          </a>
+          </Link>
         ))}
       </div>
       
