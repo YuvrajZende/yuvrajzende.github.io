@@ -1,6 +1,8 @@
 import Navigation from "@/components/Navigation";
+import FloatingNavigation from "@/components/FloatingNavigation";
+import SwapCard from "@/components/SwapCard";
 import { useState, useEffect } from "react";
-import { ExternalLink, Github, Star } from "lucide-react";
+import { Github } from "lucide-react";
 
 const Projects = () => {
   const [currentTime, setCurrentTime] = useState("");
@@ -61,6 +63,7 @@ const Projects = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <FloatingNavigation />
       <Navigation currentTime={currentTime} />
       <main className="w-full max-w-4xl mx-auto px-6">
         <div className="mb-16">
@@ -70,52 +73,7 @@ const Projects = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {projects.map((project, index) => (
-            <div key={index} className="border border-border rounded-lg p-6 hover:border-accent/50 transition-all duration-200 hover:shadow-md bg-card">
-              <div className="flex items-start justify-between mb-4">
-                <h3 className="font-semibold text-lg">{project.name}</h3>
-                <div className="flex items-center gap-1 text-sm text-muted-foreground">
-                  <Star className="w-4 h-4" />
-                  {project.stars}
-                </div>
-              </div>
-              
-              <p className="text-muted-foreground mb-4 leading-relaxed">
-                {project.description}
-              </p>
-              
-              <div className="flex flex-wrap gap-2 mb-4">
-                {project.tech.map((tech) => (
-                  <span key={tech} className="badge text-xs">
-                    {tech}
-                  </span>
-                ))}
-              </div>
-              
-              <div className="flex gap-3">
-                <a
-                  href={project.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-1 text-sm text-muted-foreground hover:text-accent transition-colors"
-                >
-                  <Github className="w-4 h-4" />
-                  Code
-                </a>
-                <a
-                  href={project.demo}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-1 text-sm text-muted-foreground hover:text-accent transition-colors"
-                >
-                  <ExternalLink className="w-4 h-4" />
-                  Demo
-                </a>
-              </div>
-            </div>
-          ))}
-        </div>
+        <SwapCard projects={projects} />
 
         <div className="mt-16 text-center">
           <p className="text-muted-foreground mb-4">

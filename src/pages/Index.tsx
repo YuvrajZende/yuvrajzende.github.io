@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Navigation from "@/components/Navigation";
+import FloatingNavigation from "@/components/FloatingNavigation";
 import HeroSection from "@/components/HeroSection";
 import AboutSection from "@/components/AboutSection";
 import ArticlesSection from "@/components/ArticlesSection";
@@ -28,6 +29,7 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <FloatingNavigation />
       <Navigation currentTime={currentTime} />
       <main>
         <HeroSection />
