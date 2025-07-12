@@ -1,30 +1,8 @@
-import Navigation from "@/components/Navigation";
 import FloatingNavigation from "@/components/FloatingNavigation";
 import SwapCard from "@/components/SwapCard";
-import { useState, useEffect } from "react";
 import { Github } from "lucide-react";
 
 const Projects = () => {
-  const [currentTime, setCurrentTime] = useState("");
-
-  useEffect(() => {
-    const updateTime = () => {
-      const now = new Date();
-      const timeString = now.toLocaleTimeString('en-US', {
-        timeZone: 'Asia/Kolkata',
-        hour12: true,
-        hour: '2-digit',
-        minute: '2-digit',
-        second: '2-digit'
-      });
-      setCurrentTime(timeString);
-    };
-
-    updateTime();
-    const interval = setInterval(updateTime, 1000);
-
-    return () => clearInterval(interval);
-  }, []);
 
   const projects = [
     {
@@ -64,7 +42,6 @@ const Projects = () => {
   return (
     <div className="min-h-screen bg-background">
       <FloatingNavigation />
-      <Navigation currentTime={currentTime} />
       <main className="w-full max-w-4xl mx-auto px-6">
         <div className="mb-16">
           <h1 className="text-5xl font-bold mb-4">Projects</h1>

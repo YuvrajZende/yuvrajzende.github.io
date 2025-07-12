@@ -1,33 +1,13 @@
-import Navigation from "@/components/Navigation";
-import { useState, useEffect } from "react";
+import FloatingNavigation from "@/components/FloatingNavigation";
 import { MessageSquare, Heart, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
+import { useState } from "react";
 
 const Guestbook = () => {
-  const [currentTime, setCurrentTime] = useState("");
   const [name, setName] = useState("");
   const [message, setMessage] = useState("");
-
-  useEffect(() => {
-    const updateTime = () => {
-      const now = new Date();
-      const timeString = now.toLocaleTimeString('en-US', {
-        timeZone: 'Asia/Kolkata',
-        hour12: true,
-        hour: '2-digit',
-        minute: '2-digit',
-        second: '2-digit'
-      });
-      setCurrentTime(timeString);
-    };
-
-    updateTime();
-    const interval = setInterval(updateTime, 1000);
-
-    return () => clearInterval(interval);
-  }, []);
 
   const guestbookEntries = [
     {
@@ -67,7 +47,7 @@ const Guestbook = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <Navigation currentTime={currentTime} />
+      <FloatingNavigation />
       <main className="w-full max-w-4xl mx-auto px-6">
         <div className="mb-16">
           <h1 className="text-5xl font-bold mb-4 flex items-center gap-3">

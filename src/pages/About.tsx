@@ -1,32 +1,11 @@
-import Navigation from "@/components/Navigation";
-import { useState, useEffect } from "react";
+import FloatingNavigation from "@/components/FloatingNavigation";
 import profilePhoto from "@/assets/profile-photo.jpg";
 
 const About = () => {
-  const [currentTime, setCurrentTime] = useState("");
-
-  useEffect(() => {
-    const updateTime = () => {
-      const now = new Date();
-      const timeString = now.toLocaleTimeString('en-US', {
-        timeZone: 'Asia/Kolkata',
-        hour12: true,
-        hour: '2-digit',
-        minute: '2-digit',
-        second: '2-digit'
-      });
-      setCurrentTime(timeString);
-    };
-
-    updateTime();
-    const interval = setInterval(updateTime, 1000);
-
-    return () => clearInterval(interval);
-  }, []);
 
   return (
     <div className="min-h-screen bg-background">
-      <Navigation currentTime={currentTime} />
+      <FloatingNavigation />
       <main className="w-full max-w-4xl mx-auto px-6">
         <div className="flex flex-col lg:flex-row items-start gap-8 mb-16">
           <div className="flex-1">
