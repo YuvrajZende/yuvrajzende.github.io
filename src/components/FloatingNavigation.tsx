@@ -16,9 +16,9 @@ const FloatingNavigation = () => {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: -50 }}
+      initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: isVisible ? 1 : 0.7, y: 0 }}
-      className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50"
+      className="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50"
     >
       <nav className="bg-background/80 backdrop-blur-md border border-border rounded-full px-6 py-3 shadow-lg">
         <div className="flex items-center space-x-6">
