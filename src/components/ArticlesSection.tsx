@@ -1,27 +1,7 @@
 import ArticleCard from "./ArticleCard";
-import databaseArticle from "@/assets/database-article.jpg";
-import educationArticle from "@/assets/education-article.jpg";
+import { articles } from "@/data/portfolio";
 
 const ArticlesSection = () => {
-  const articles = [
-    {
-      title: "Build your own Custom Database using TypeScript",
-      readTime: "200 mins read",
-      publishDate: "March 19, 2025 (3mo ago)",
-      description: "As a developer, I wanted to understand how databases work under the hood. Instead of just reading about them, I decided to build my own database from scratch in TypeScript.",
-      imageUrl: databaseArticle,
-      link: "https://b.devwtf.in/byodb"
-    },
-    {
-      title: "The education trap",
-      readTime: "15 mins read", 
-      publishDate: "October 10, 2024 (8mo ago)",
-      description: "A good degree is all you need. Do really skills matter? Education is a scam? The education trap.",
-      imageUrl: educationArticle,
-      link: "#"
-    }
-  ];
-
   return (
     <section className="w-full max-w-4xl mx-auto px-6 mb-16">
       <div className="text-center mb-12">

@@ -1,73 +1,190 @@
-# Welcome to your Lovable project
+# Personal Portfolio Website
 
-## Project info
+A modern, responsive portfolio website built with React, TypeScript, and Tailwind CSS. Features a clean design with dark mode support, smooth animations, and comprehensive sections for showcasing projects, skills, and achievements.
 
-**URL**: https://lovable.dev/projects/0b6e0545-2bbc-4474-bdef-37c02ffce88c
+## ✨ Features
 
-## How can I edit this code?
+- **Modern Design**: Clean, professional layout with dark/light mode support
+- **Responsive**: Fully responsive design that works on all devices
+- **Interactive**: Smooth animations and hover effects using Framer Motion
+- **Project Showcase**: Display projects with status indicators (Completed, In Progress, Coming Soon)
+- **Skills Section**: Visual skills display with glass morphism effects
+- **Coding Profiles**: Integration with LeetCode, CodeChef, CodeForces, and GeeksforGeeks
+- **Contact Form**: Functional contact form with email integration
+- **SEO Optimized**: Meta tags and proper structure for search engines
 
-There are several ways of editing your application.
+## 🚀 Tech Stack
 
-**Use Lovable**
+- **Frontend**: React 18, TypeScript, Vite
+- **Styling**: Tailwind CSS, shadcn/ui components
+- **Animations**: Framer Motion
+- **Icons**: Lucide React
+- **Deployment**: Vercel (ready)
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/0b6e0545-2bbc-4474-bdef-37c02ffce88c) and start prompting.
+## 📁 Project Structure
 
-Changes made via Lovable will be committed automatically to this repo.
+```
+src/
+├── components/          # Reusable UI components
+│   ├── ui/             # shadcn/ui components
+│   ├── AboutSection.tsx
+│   ├── ContactForm.tsx
+│   ├── ProjectCard.tsx
+│   └── ...
+├── pages/              # Page components
+│   ├── Index.tsx       # Home page
+│   ├── About.tsx       # About page
+│   ├── Projects.tsx    # Projects page
+│   └── Connect.tsx     # Contact page
+├── data/               # Portfolio data
+│   └── portfolio.ts    # All content and configuration
+└── lib/                # Utility functions
+```
 
-**Use your preferred IDE**
+## 🎯 Key Sections
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### Home Page
+- Hero section with personal introduction
+- Skills showcase with glass morphism
+- Education timeline
+- Certificates display
+- Articles/blog posts
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### Projects Page
+- Categorized projects (Self Projects, Hackathon, Weekend Vibes)
+- Status indicators for each project
+- Interactive project cards with links
 
-Follow these steps:
+### About Page
+- Detailed personal information
+- Coding platform profiles with ratings
+- Professional background
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+### Contact Page
+- Multiple contact methods (GitHub, LinkedIn, Twitter, Instagram, Email)
+- Functional contact form
+- Direct email integration
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+## 🛠️ Customization
 
-# Step 3: Install the necessary dependencies.
-npm i
+### Adding Projects
+Edit `src/data/portfolio.ts`:
+```typescript
+{
+  id: "project-1",
+  title: "Project Name",
+  description: "Project description",
+  image: "/project-images/project.jpg",
+  technologies: ["React", "TypeScript"],
+  githubUrl: "https://github.com/username/project",
+  liveUrl: "https://project-demo.com",
+  featured: true,
+  category: "self-projects",
+  year: 2024,
+  status: "completed" // "completed" | "in-progress" | "coming-soon"
+}
+```
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+### Updating Personal Info
+Edit the `personalInfo` object in `src/data/portfolio.ts`:
+```typescript
+export const personalInfo = {
+  name: "Your Name",
+  title: "Your Title",
+  subtitle: "Your subtitle",
+  location: "Your Location",
+  email: "your.email@example.com",
+  bio: "Your bio...",
+  avatar: "/your-photo.jpg"
+};
+```
+
+### Adding Skills
+Edit the `skills` array in `src/data/portfolio.ts`:
+```typescript
+{
+  name: "Skill Name",
+  level: 85, // 1-100
+  category: "frontend", // "frontend" | "backend" | "database" | "devops" | "design" | "other"
+  icon: "Code", // Lucide icon name
+  color: "blue" // Color for the glass box
+}
+```
+
+## 🚀 Getting Started
+
+### Prerequisites
+- Node.js 18+ 
+- npm or yarn
+
+### Installation
+1. Clone the repository:
+```bash
+git clone https://github.com/yourusername/portfolio.git
+cd portfolio
+```
+
+2. Install dependencies:
+```bash
+npm install
+```
+
+3. Start the development server:
+```bash
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+4. Open [http://localhost:5173](http://localhost:5173) in your browser.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### Build for Production
+```bash
+npm run build
+```
 
-**Use GitHub Codespaces**
+## 📦 Deployment
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+### Vercel (Recommended)
+1. Push your code to GitHub
+2. Connect your repository to Vercel
+3. Deploy automatically
 
-## What technologies are used for this project?
+### Other Platforms
+- **Netlify**: Connect GitHub repository
+- **GitHub Pages**: Use GitHub Actions
+- **Firebase**: Use Firebase Hosting
 
-This project is built with:
+## 🎨 Customization Guide
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+### Colors and Theme
+- Edit `tailwind.config.ts` for color schemes
+- Modify CSS variables in `src/index.css`
+- Update theme colors in `src/data/portfolio.ts`
 
-## How can I deploy this project?
+### Adding New Sections
+1. Create component in `src/components/`
+2. Add to page in `src/pages/`
+3. Update navigation if needed
 
-Simply open [Lovable](https://lovable.dev/projects/0b6e0545-2bbc-4474-bdef-37c02ffce88c) and click on Share -> Publish.
+### Contact Form
+The contact form uses a mailto fallback. For advanced email functionality:
+1. Sign up for EmailJS or similar service
+2. Update the form submission logic in `ContactForm.tsx`
 
-## Can I connect a custom domain to my Lovable project?
+## 📝 License
 
-Yes, you can!
+This project is open source and available under the [MIT License](LICENSE).
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+## 🤝 Contributing
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## 📞 Contact
+
+- **Portfolio**: [your-portfolio-url.com](https://your-portfolio-url.com)
+- **Email**: your.email@example.com
+- **LinkedIn**: [Your LinkedIn](https://linkedin.com/in/yourprofile)
+- **GitHub**: [Your GitHub](https://github.com/yourusername)
+
+---
+
+⭐ Star this repository if you found it helpful!

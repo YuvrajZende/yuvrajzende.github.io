@@ -1,20 +1,13 @@
-interface ArticleCardProps {
-  title: string;
-  readTime: string;
-  publishDate: string;
-  description: string;
-  imageUrl: string;
-  link: string;
-}
+import { Article } from "@/data/portfolio";
 
-const ArticleCard = ({ title, readTime, publishDate, description, imageUrl, link }: ArticleCardProps) => {
+const ArticleCard = ({ title, readTime, publishDate, description, image, link }: Article) => {
   return (
     <article className="group cursor-pointer">
       <a href={link} target="_blank" rel="noopener noreferrer" className="block">
         <div className="flex flex-col sm:flex-row gap-4 p-6 rounded-lg border border-border hover:border-accent/50 transition-all duration-200 hover:shadow-md bg-card">
           <div className="flex-shrink-0">
             <img
-              src={imageUrl}
+              src={image}
               alt={title}
               className="w-full sm:w-20 sm:h-20 object-cover rounded-md bg-secondary"
             />

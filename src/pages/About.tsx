@@ -1,104 +1,117 @@
+import React from "react";
 import FloatingNavigation from "@/components/FloatingNavigation";
-import profilePhoto from "@/assets/profile-photo.jpg";
+import GlassIcons from "@/components/GlassIcons";
+import { personalInfo, skills } from "@/data/portfolio";
+import { 
+  Code, Cpu, Database, Globe, Brain, BarChart3, Eye, Network, FileText,
+  TrendingUp
+} from "lucide-react";
 
 const About = () => {
-
   return (
     <div className="min-h-screen bg-background">
       <FloatingNavigation />
-      <main className="w-full max-w-4xl mx-auto px-6">
+      <main className="w-full max-w-4xl mx-auto px-6 pt-8">
         <div className="flex flex-col lg:flex-row items-start gap-8 mb-16">
           <div className="flex-1">
             <h1 className="text-5xl font-bold mb-4">About Me</h1>
+            <h2 className="text-2xl font-bold mb-4">Hey, I am Aion</h2>
             <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
-              Deep dive into my journey as a developer and creator.
+              I'm an aspiring AI/ML engineer passionate about building intelligent systems, creative products, and solving real-world problems.
             </p>
           </div>
           
           <div className="flex-shrink-0">
             <img
-              src={profilePhoto}
-              alt="Saidev Dhal"
+              src={personalInfo.avatar}
+              alt={personalInfo.name}
               className="w-32 h-32 rounded-full object-cover shadow-lg ring-4 ring-secondary"
             />
           </div>
         </div>
 
-        <div className="space-y-12">
+        <div className="space-y-14">
           <section>
-            <h2 className="mb-6">My Story</h2>
+          <h2 className="mb-6">Myself</h2>
             <div className="space-y-4 text-muted-foreground leading-relaxed">
               <p>
-                I'm a super introvert nurtured in a small state{" "}
-                <a href="https://maps.app.goo.gl/SFCDCshEyR96jmNUA" className="link" target="_blank" rel="noopener noreferrer">
-                  Odisha, India
-                </a>
-                , passionate about building impactful products that leverage technology to make a difference.
+                I’m an introverted tech enthusiast from{" "}
+                <a href="https://maps.app.goo.gl/68PWvUv3BFejxJHB9" className="link" target="_blank" rel="noopener noreferrer">
+                  Belgavi, India
+                </a>, deeply passionate about crafting digital solutions that make a real-world impact.
               </p>
               <p>
-                I started my coding journey at the age of 14 while I was in 8th grade. It's been a rollercoaster ride since then, 
-                filled with countless hours of learning, building, and sharing knowledge with the community.
+                Whether it's designing smart systems or building clean interfaces, I love turning abstract ideas into tangible products.
               </p>
               <p>
-                I often share my work to{" "}
-                <a href="https://git.new/skidgod" className="link" target="_blank" rel="noopener noreferrer">
-                  contribute
+                I regularly share my projects on{" "}
+                <a href="https://github.com/YuvrajZende" className="link" target="_blank" rel="noopener noreferrer">
+                  GitHub
                 </a>{" "}
-                to the open-source community. In addition to my development work, I'm always exploring new ideas, 
-                particularly in areas like machine learning and robotics.
+                to contribute to the open-source community. Lately, I’ve been diving deeper into machine learning, robotics, and future-forward tech.
+              </p>
+            </div>
+            <br />
+            <h2 className="mb-6">What does "Aion" mean?</h2>
+            <div className="space-y-4 text-muted-foreground leading-relaxed">
+              <p>
+                "Aion" isn’t just a name — it’s an identity. It reflects my mindset: driven by growth, resilience, and vision.
+              </p>
+              <p>
+                Derived from ancient Greek, *Aion* means “eternity” or “infinite time.” It stands for timeless curiosity, the pursuit of mastery, and building for the future — not just for today.
+              </p>
+              <p>
+                For me, Aion is a reminder to stay grounded yet think beyond limits. It’s who I am, and who I’m becoming.
               </p>
             </div>
           </section>
 
-          <section>
-            <h2 className="mb-6">What does "SkidGod" mean?</h2>
-            <div className="space-y-4 text-muted-foreground leading-relaxed">
-              <p>
-                People often ask me about my online alias{" "}
-                <a href="https://dub.sh/skidgod" className="link" target="_blank" rel="noopener noreferrer">
-                  SkidGod
-                </a>
-                . The name has an interesting backstory that reflects my journey in the tech world.
-              </p>
-              <p>
-                When I started learning programming, I was fascinated by how quickly I could "skid" through different 
-                technologies and concepts. The "God" part represents my aspiration to master these skills at a divine level. 
-                It's both humble and ambitious - acknowledging that I'm always learning while striving for excellence.
-              </p>
-              <p>
-                Today, SkidGod represents my commitment to continuous learning, building cool projects, and helping others 
-                in their coding journey. It's not just a username - it's a mindset.
-              </p>
-            </div>
-          </section>
 
           <section>
             <h2 className="mb-6">Skills & Interests</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="space-y-3">
-                <h3 className="font-semibold">Development</h3>
-                <ul className="text-muted-foreground space-y-1">
-                  <li>• Full-stack web development</li>
-                  <li>• TypeScript & JavaScript</li>
-                  <li>• React & Next.js</li>
-                  <li>• Node.js & Express</li>
-                  <li>• Database design</li>
-                </ul>
+            <div className="space-y-8">
+              <div>
+                <h3 className="font-semibold mb-4">Technical Skills</h3>
+                <GlassIcons 
+                  items={skills.map(skill => {
+                    const iconMap: Record<string, React.ReactNode> = {
+                      Code: <Code />,
+                      Cpu: <Cpu />,
+                      Database: <Database />,
+                      Globe: <Globe />,
+                      Brain: <Brain />,
+                      BarChart3: <BarChart3 />,
+                      Eye: <Eye />,
+                      Network: <Network />,
+                      FileText: <FileText />
+                    };
+                    return {
+                      icon: iconMap[skill.icon] || <Code />,
+                      color: skill.color,
+                      label: skill.name
+                    };
+                  })}
+                  className="mb-6"
+                />
               </div>
-              <div className="space-y-3">
-                <h3 className="font-semibold">Interests</h3>
-                <ul className="text-muted-foreground space-y-1">
-                  <li>• Machine Learning</li>
-                  <li>• Robotics</li>
-                  <li>• Open Source</li>
-                  <li>• Content Creation</li>
-                  <li>• Indie Hacking</li>
-                </ul>
+              <div>
+                <h3 className="font-semibold mb-4">Interests</h3>
+                <GlassIcons 
+                  items={[
+                    { icon: <Brain />, color: 'indigo', label: 'Machine Learning' },
+                    { icon: <Globe />, color: 'blue', label: 'Web Development' },
+                    { icon: <Code />, color: 'green', label: 'Vibe Coding' },
+                    { icon: <Cpu />, color: 'purple', label: 'DSA' },
+                    { icon: <TrendingUp />, color: 'orange', label: 'Quantitative Finance' },
+                  ]}
+                />
               </div>
             </div>
           </section>
         </div>
       </main>
+      {/* Bottom padding for comfortable scrolling */}
+      <div className="h-20"></div>
     </div>
   );
 };

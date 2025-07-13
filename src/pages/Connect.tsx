@@ -1,56 +1,56 @@
 import FloatingNavigation from "@/components/FloatingNavigation";
-import { Mail, Linkedin, Instagram, Twitter, MessageCircle } from "lucide-react";
+import { Mail, Linkedin, Instagram, Twitter, MessageCircle, Github } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { socialLinks, contactInfo } from "@/data/portfolio";
 
 const Connect = () => {
-  const contactMethods = [
-    {
-      name: "Email",
-      description: "Drop me a line anytime",
-      icon: Mail,
-      link: "mailto:hello@devwtf.in",
-      color: "text-red-500",
-      bgColor: "bg-red-50 dark:bg-red-900/20"
-    },
-    {
-      name: "LinkedIn",
-      description: "Let's connect professionally",
-      icon: Linkedin,
-      link: "https://linkedin.com/in/skidgod",
-      color: "text-blue-600",
-      bgColor: "bg-blue-50 dark:bg-blue-900/20"
-    },
-    {
-      name: "Instagram", 
-      description: "Follow my journey",
-      icon: Instagram,
-      link: "https://instagram.com/skidgod",
-      color: "text-pink-500",
-      bgColor: "bg-pink-50 dark:bg-pink-900/20"
-    },
-    {
-      name: "X (Twitter)",
-      description: "Latest thoughts and updates",
-      icon: Twitter,
-      link: "https://x.com/skidgod",
-      color: "text-gray-900 dark:text-gray-100",
-      bgColor: "bg-gray-50 dark:bg-gray-900/20"
-    },
-    {
-      name: "WhatsApp",
-      description: "Quick chats and discussions",
-      icon: MessageCircle,
-      link: "https://wa.me/+919876543210",
-      color: "text-green-500",
-      bgColor: "bg-green-50 dark:bg-green-900/20"
+  const getIcon = (iconName: string) => {
+    switch (iconName.toLowerCase()) {
+      case 'github': return Github;
+      case 'linkedin': return Linkedin;
+      case 'twitter': return Twitter;
+      case 'instagram': return Instagram;
+      case 'mail': return Mail;
+      default: return MessageCircle;
     }
-  ];
+  };
+
+  const getIconColor = (iconName: string) => {
+    switch (iconName.toLowerCase()) {
+      case 'github': return "text-gray-900 dark:text-gray-100";
+      case 'linkedin': return "text-blue-600";
+      case 'twitter': return "text-blue-400";
+      case 'instagram': return "text-pink-500";
+      case 'mail': return "text-red-500";
+      default: return "text-green-500";
+    }
+  };
+
+  const getBgColor = (iconName: string) => {
+    switch (iconName.toLowerCase()) {
+      case 'github': return "bg-gray-50 dark:bg-gray-900/20";
+      case 'linkedin': return "bg-blue-50 dark:bg-blue-900/20";
+      case 'twitter': return "bg-blue-50 dark:bg-blue-900/20";
+      case 'instagram': return "bg-pink-50 dark:bg-pink-900/20";
+      case 'mail': return "bg-red-50 dark:bg-red-900/20";
+      default: return "bg-green-50 dark:bg-green-900/20";
+    }
+  };
+
+  const contactMethods = socialLinks.map(link => ({
+    name: link.name,
+    description: `Connect with me on ${link.name}`,
+    icon: getIcon(link.icon),
+    link: link.url,
+    color: getIconColor(link.icon),
+    bgColor: getBgColor(link.icon)
+  }));
 
   return (
     <div className="min-h-screen bg-background">
       <FloatingNavigation />
       <main className="w-full max-w-4xl mx-auto px-6 pt-16">
-        <div className="mb-16 text-center">
+        <div className="mb-16 text-center pt-8">
           <h1 className="text-5xl font-bold mb-4">Let's Connect</h1>
           <p className="text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto">
             I love connecting with fellow developers, creators, and curious minds. 
@@ -62,7 +62,7 @@ const Connect = () => {
           {contactMethods.map((method, index) => (
             <div
               key={method.name}
-              className="border border-border rounded-lg p-6 hover:border-accent/50 transition-all duration-200 hover:shadow-md bg-card group"
+              className="border border-border rounded-lg p-6 hover:border-accent/50 transition-all duration-300 hover:shadow-xl hover:shadow-primary/20 bg-card group"
             >
               <div className={`w-12 h-12 ${method.bgColor} rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-200`}>
                 <method.icon className={`w-6 h-6 ${method.color}`} />
@@ -97,14 +97,14 @@ const Connect = () => {
               I'd love to hear from you!
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <Button asChild>
-                <a href="mailto:hello@devwtf.in">
+              <Button asChild className="hover:shadow-lg hover:shadow-primary/20 transition-all duration-200">
+                <a href={`mailto:${contactInfo.email}`}>
                   <Mail className="w-4 h-4 mr-2" />
                   Get in Touch
                 </a>
               </Button>
-              <Button asChild variant="outline">
-                <a href="https://linkedin.com/in/skidgod" target="_blank" rel="noopener noreferrer">
+              <Button asChild variant="outline" className="hover:shadow-lg hover:shadow-primary/20 transition-all duration-200">
+                <a href={socialLinks.find(s => s.name === "LinkedIn")?.url || "#"} target="_blank" rel="noopener noreferrer">
                   <Linkedin className="w-4 h-4 mr-2" />
                   View Profile
                 </a>
@@ -113,6 +113,8 @@ const Connect = () => {
           </div>
         </div>
       </main>
+      {/* Bottom padding for comfortable scrolling */}
+      <div className="h-20"></div>
     </div>
   );
 };

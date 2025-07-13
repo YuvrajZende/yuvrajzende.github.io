@@ -6,7 +6,7 @@ import { useTheme } from 'next-themes'
 
 const FloatingNavigation = () => {
   const [isVisible, setIsVisible] = useState(true)
-  const { theme, setTheme } = useTheme()
+  const { resolvedTheme, setTheme } = useTheme()
 
   const navItems = [
     { name: "Home", href: "/" },
@@ -16,17 +16,17 @@ const FloatingNavigation = () => {
   ]
 
   const toggleTheme = () => {
-    setTheme(theme === 'dark' ? 'light' : 'dark')
+    setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')
   }
 
   return (
     <motion.div
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: isVisible ? 1 : 0.7, y: 0 }}
-      className="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50"
+      className="fixed bottom-4 left-1/3 transform -translate-x-1/3 z-50 w-auto"
     >
-      <nav className="bg-background/80 backdrop-blur-md border border-border rounded-full px-3 sm:px-6 py-2 sm:py-3 shadow-lg">
-        <div className="flex items-center space-x-2 sm:space-x-6">
+      <nav className="bg-background/80 backdrop-blur-md border border-border rounded-full px-4 sm:px-8 py-3 sm:py-4 pr-4 shadow-lg">
+        <div className="flex items-center justify-center space-x-2 sm:space-x-4 lg:space-x-6">
           {navItems.map((item) => (
             <motion.div
               key={item.name}
@@ -35,7 +35,7 @@ const FloatingNavigation = () => {
             >
               <Link
                 to={item.href}
-                className="text-xs sm:text-sm font-medium text-foreground/80 hover:text-foreground transition-colors relative inline-block px-2 py-1"
+                className="text-xs sm:text-sm lg:text-base font-medium text-foreground/80 hover:text-foreground transition-colors relative inline-block px-1 sm:px-2 py-1"
               >
                 <span className="hidden sm:inline">{item.name}</span>
                 <span className="sm:hidden">
@@ -53,7 +53,6 @@ const FloatingNavigation = () => {
               </Link>
             </motion.div>
           ))}
-          
           <motion.button
             onClick={toggleTheme}
             whileHover={{ scale: 1.05 }}
@@ -61,7 +60,7 @@ const FloatingNavigation = () => {
             className="p-1.5 sm:p-2 rounded-full hover:bg-accent transition-colors"
             aria-label="Toggle theme"
           >
-            {theme === 'dark' ? (
+            {resolvedTheme === 'dark' ? (
               <Sun className="w-3 h-3 sm:w-4 sm:h-4" />
             ) : (
               <Moon className="w-3 h-3 sm:w-4 sm:h-4" />
