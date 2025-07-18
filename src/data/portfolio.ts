@@ -87,7 +87,7 @@ My learning journey spans across machine learning, computer vision, web developm
 I believe in continuous learning, rapid experimentation, and aiming high — both in tech and life. My current goal is to become a machine learning engineer specializing in quantitative finance within the next year, while also building a solid portfolio of skills, tools, and projects.
 
 "I'm not just learning how to build things — I'm preparing to build the future."`,
-  avatar: "/profile-photo.jpg",
+  avatar: "/images/profile/profile-photo-eWizrDaP.jpg",
   available: true,
 };
 
@@ -128,8 +128,8 @@ export const projects: Project[] = [
     description: "A modern, responsive portfolio website with dark mode, smooth animations, and SEO optimization.",
     image: "/project-images/portfolio.jpg",
     technologies: ["React", "TypeScript", "Tailwind CSS", "Framer Motion"],
-    githubUrl: "https://github.com/yourusername/portfolio",
-    liveUrl: "https://your-portfolio.com",
+    githubUrl: "https://github.com/YuvrajZende/yuvrajzende.github.io",
+    liveUrl: "https://yuvrajzende.github.io",
     featured: false,
     category: "self-projects",
     year: 2024,
@@ -373,8 +373,8 @@ export const navigation = {
 export const siteConfig = {
   title: "Personal Portfolio",
   description: "Personal portfolio website showcasing projects and skills",
-  url: "https://your-portfolio.com",
-  author: "Your Name",
+  url: "https://yuvrajzende.github.io",
+  author: "Yuvraj Zende",
   theme: {
     primaryColor: "#3b82f6",
     secondaryColor: "#1e40af"
